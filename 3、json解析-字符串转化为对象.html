@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>json解析-字符串转化为对象</title>
+</head>
+<body>
+	<script>
+	str='{"name":"刘赛","age":26}';
+	console.log(str);
+
+	// eval()解析json（是指将符合json语法的字符串转换成对象的过程）,eval前后必须加括号，危险函数，不建议使用
+	var obj=eval("("+str+")");
+	console.log(obj);
+
+	//JSON.parse()解析json，推荐使用
+	var obj2=JSON.parse(str);
+	console.log(obj2)
+	</script>
+</body>
+</html>

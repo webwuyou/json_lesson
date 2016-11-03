@@ -1,0 +1,16 @@
+<script>
+
+var str = '{"name": "Geoff Lui", "age": 26}';
+
+var obj = JSON.parse(str, fun);
+
+function fun(name, value){
+	
+	if( name == "age" )
+		value = 14;
+	return value;
+}
+
+console.log(obj);
+
+</script>

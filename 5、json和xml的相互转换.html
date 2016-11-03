@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>json和xml的相互转换</title>
+	<script src="jquery-1.11.1.js"></script>
+	<script src="jquery.json2xml.js"></script>
+	<script src="jquery.xml2json.js"></script>
+</head>
+<body>
+<h1>xml转换成json</h1>
+		<script>
+		var str="<root>"+
+				"<name>刘赛</name>"+
+				"<age>26</age>"+
+				"<friends>张三</friends>"+
+				"<friends>李四</friends>"+
+				"<friends>王五</friends>"+
+				"</root>";
+			console.log(str);
+			var obj=$.xml2json(str);
+			console.log(obj);
+			var jsonstr=JSON.stringify(obj,"","\t");
+			console.log(jsonstr);
+		</script>
+
+		<h1>json转换成xml</h1>
+		<script>
+		var jsonstr2={
+			"name":"liusai",
+			"age":14
+		};
+		console.log(jsonstr2);
+		var xmlstr2=$.json2xml(jsonstr2);
+		console.log(xmlstr2);
+		var obj2={
+			name:"liusai",
+			age:26
+		};
+		var xmlstr3=$.json2xml(obj2);
+		console.log(xmlstr3);
+		</script>
+</body>
+</html>

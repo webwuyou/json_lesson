@@ -1,0 +1,38 @@
+<script>
+
+var xmlhttp;
+
+xmlhttp = CreateXHR();
+
+xmlhttp.open("GET","test.xml",true);
+xmlhttp.send();
+
+xmlhttp.onreadystatechange = function(){
+
+	if( xmlhttp.readyState == 4 && xmlhttp.status == 200 ){
+
+		var xmlroot = xmlhttp.responseXML;
+		console.log(xmlroot);
+
+		var friends = xmlroot.getElementsByTagName("friends");
+
+		console.log(friends);
+	}
+
+}
+
+
+function CreateXHR(){
+
+	if(window.XMLHttpRequest){
+		// IE7++, Chrome, Firefox, ..
+		return new XMLHttpRequest();
+
+	}else{
+		// IE6, IE5
+		return new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+}
+
+</script>

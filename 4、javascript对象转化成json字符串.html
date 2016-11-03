@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>javascript序列化-对象转化为json字符串</title>
+</head>
+<body>
+<h1>序列化是指讲javascript值转化成json字符串的过程</h1>
+<p>JSON.stringify()能够将javascript值转化为JSON字符串.JSON.stringify()生成的字符串可以用JSON.parse()再还原成javascript值</p>
+<p>参数说明：</p>
+<p>JSON.stringify(value,[replacer],[space]),括号中的参数非必填</p>
+<p>value，必选参数，被变换的javascript值，一般是对象或者数组。</p>
+<p>replacer，可以省略。有两种选择：函数或者数组。</p>
+<p>1、函数。每一组名称/值对都会调用此函数，该函数返回一个值，作为新值输出到结果中。如果返回undefined，则该成员被忽略。一般用于序列化的同时修改某个名称的值</p>
+<p>2、数组。则只有数组中存在名称的才能够被转换，且转换后的顺序与数组一致。</p>
+<p>space，可以省略，主要是在json字符串中添加空白，方便排版和阅读</p>
+<h1>value用法</h1>
+	<script>
+	//定义一个javascript对象，注意名称和json的区别，js在可以用引号，也可以不用
+	var obj={
+		name:"liusai",
+		'age':26,
+	};
+	console.log(obj);
+	var jsonstr=JSON.stringify(obj);
+	console.log(jsonstr);
+	</script>
+
+
+<h1>replacer函数的用法</h1>
+<script>
+var jsonstr2=JSON.stringify(obj,fun);
+function fun(name,value){
+	if(name=="age")
+		value=14;
+	return value;	
+	};
+console.log(jsonstr2);
+</script>
+
+<h1>replacer数组的用法</h1>
+<script>
+var obj={
+	a:1,
+	b:2,
+	c:3,
+	d:4
+};
+console.log(obj);
+var jsonstr=JSON.stringify(obj,["c","a","b"]);
+console.log(jsonstr);
+</script>
+
+<h1>space参数的用法</h1>
+<script>
+var jsonstr=JSON.stringify(obj,["c","a","b"],"\t");
+console.log(jsonstr);	
+</script>
+</body>
+</html>
